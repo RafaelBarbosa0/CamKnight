@@ -74,7 +74,7 @@ namespace CamKnight
         private int minBlobSize;
 
         // Run update once every X frames.
-        private int frames;
+        private float frames;
 
         public Vector2 TipMidPoint { get => tipMidPoint; private set => tipMidPoint = value; }
         public Vector2 BaseMidPoint { get => baseMidPoint; private set => baseMidPoint = value; }
@@ -114,7 +114,7 @@ namespace CamKnight
 
         private void Update()
         {
-            frames++;
+            frames += Time.deltaTime;
 
             if(frames % 10 == 0)
             {

@@ -14,6 +14,7 @@ namespace CamKnight
 
         private bool attackStarted;
 
+
         public void OnEnter(EnemyController enemy)
         {
             // Create attack sequence array with number of attacks enemy can perform.
@@ -41,12 +42,13 @@ namespace CamKnight
                 enemy.attackIcons[attackSequence[attackIndex]].gameObject.SetActive(true);
 
                 // Play animation here.
+                enemy.animator.Play(enemy.attackStrings[attackSequence[attackIndex]]);
 
                 attackStarted = true;
             }
 
             // Increment timer.
-            timer++;
+            timer += Time.deltaTime;
 
             if(timer >= enemy.attackInterval)
             {

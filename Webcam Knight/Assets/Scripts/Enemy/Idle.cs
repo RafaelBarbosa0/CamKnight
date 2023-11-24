@@ -14,6 +14,9 @@ namespace CamKnight
         {
             // Set a random wait time to switch to attacking from min to max value.
             attackSwitchTime = Random.Range(enemy.minSwitchAttack, enemy.maxSwitchAttack);
+
+            // Set idle animation.
+            enemy.animator.Play("Idle");
         }
 
         public void UpdateState(EnemyController enemy)
@@ -25,7 +28,7 @@ namespace CamKnight
             if (enemy.stun >= enemy.stunMax) enemy.ChangeState(new Stunned());
 
             // Increment timer.
-            timer++;
+            timer += Time.deltaTime;
 
             // If timer passes max change to attack state.
             if(timer >= attackSwitchTime) enemy.ChangeState(new Attacking());

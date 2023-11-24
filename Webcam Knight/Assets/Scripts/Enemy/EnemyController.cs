@@ -16,6 +16,14 @@ namespace CamKnight
         [SerializeField]
         internal float stunMax;
 
+        [Header("Animator reference")]
+        [SerializeField]
+        internal Animator animator;
+
+        [Header("Spawn time")]
+        [SerializeField]
+        internal float spawnTime;
+
         [Header("Wait time range to change from idle to attack")]
         [SerializeField]
         internal float minSwitchAttack;
@@ -34,15 +42,14 @@ namespace CamKnight
         [SerializeField]
         internal GameObject[] attackIcons;
 
+        [Header("Attack strings for animator")]
+        [SerializeField]
+        internal string[] attackStrings;
+
         // Start is called before the first frame update
         void Start()
         {
-            for(int i = 0; i < attackIcons.Length; i++)
-            {
-                attackIcons[i].SetActive(false);
-            }
-
-            currentState = new Idle();
+            currentState = new Spawning();
 
             currentState.OnEnter(this);
         }

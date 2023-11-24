@@ -358,6 +358,7 @@
 "Assets/Scripts/Enemy/Dead.cs"
 "Assets/Scripts/Enemy/EnemyController.cs"
 "Assets/Scripts/Enemy/Idle.cs"
+"Assets/Scripts/Enemy/Spawning.cs"
 "Assets/Scripts/Enemy/Stunned.cs"
 "Assets/Scripts/Image Processing/Blob.cs"
 "Assets/Scripts/Image Processing/BlobDetection.cs"
