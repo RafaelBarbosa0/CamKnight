@@ -8,16 +8,19 @@ namespace CamKnight
     public class SwordTracking : MonoBehaviour
     {
         // Reference to blob detection script.
+        [Header("Blob detection reference")]
         [SerializeField]
         private BlobDetection blobs;
 
         // Corner positions of plane where cam texture is renderer.
+        [Header("Plane corners")]
         [SerializeField]
         private Transform bottomLeft;
         [SerializeField]
         private Transform topRight;
 
         // Reference to sword pivot to move sword model.
+        [Header("Sword pivot")]
         [SerializeField]
         private Transform swordPivot;
 
@@ -29,6 +32,7 @@ namespace CamKnight
         private Vector3 direction;
 
         // Value to define what values pass through high pass filter.
+        [Header("High pass filter")]
         [SerializeField]
         private float filterTreshold;
 

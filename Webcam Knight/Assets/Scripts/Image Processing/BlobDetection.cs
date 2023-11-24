@@ -13,10 +13,12 @@ namespace CamKnight
         private static WebCamTexture cam;
 
         // Turn off image processing for testing.
+        [Header("Turn processing on and off")]
         [SerializeField]
         private bool processImage;
 
         // Colors we are looking for.
+        [Header("Colors to look for")]
         [SerializeField]
         private Color tipColor;
         [SerializeField]
@@ -28,6 +30,7 @@ namespace CamKnight
         private Color offPixelColor;
 
         // Threshold for finding same color in pixels.
+        [Header("Similarity treshold")]
         [SerializeField]
         private float tipColorThreshold;
         [SerializeField]
@@ -43,8 +46,7 @@ namespace CamKnight
         private bool[] erosionKernel;
 
         // Number of times erosion is performed.
-        [SerializeField]
-        private int erosionAmount;
+        private int erosionAmount = 0;
 
         // Blob lists.
         private List<Blob> tipBlobs;
@@ -55,6 +57,7 @@ namespace CamKnight
         private Blob mainBaseBlob;
 
         // Distance for points to be considered part of the same blob.
+        [Header("Pixel distance to be considered blob")]
         [SerializeField]
         private int blobDistance;
 
@@ -66,6 +69,7 @@ namespace CamKnight
         private Vector2 baseMidPoint;
 
         // Minimum required pixel count for blobs.
+        [Header("Minimum blob size")]
         [SerializeField]
         private int minBlobSize;
 
