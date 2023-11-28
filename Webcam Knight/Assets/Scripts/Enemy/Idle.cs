@@ -33,5 +33,10 @@ namespace CamKnight
             // If timer passes max change to attack state.
             if(timer >= attackSwitchTime) enemy.ChangeState(new Attacking());
         }
+
+        public void OnExit(EnemyController enemy)
+        {
+
+        }
     }
 }

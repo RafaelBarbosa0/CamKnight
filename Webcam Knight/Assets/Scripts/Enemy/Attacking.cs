@@ -21,7 +21,7 @@ namespace CamKnight
             attackSequence = new int[enemy.attackAmount];
 
             // Randomize enemy attack sequence.
-            for(int i = 0; i < attackSequence.Length; i++)
+            for (int i = 0; i < attackSequence.Length; i++)
             {
                 attackSequence[i] = Random.Range(0, enemy.attackZones.Length - 1);
             }
@@ -32,17 +32,14 @@ namespace CamKnight
             // If enemy health drops to 0 change to dead state.
             if (enemy.health <= 0) enemy.ChangeState(new Dead());
 
-            // If enemy stun reaches max change to stunned state.
-            if (enemy.stun >= enemy.stunMax) enemy.ChangeState(new Stunned());
-
             // Attack start behavior.
-            if(!attackStarted)
+            if (!attackStarted)
             {
                 // Display attack indicator.
                 enemy.attackIcons[attackSequence[attackIndex]].gameObject.SetActive(true);
 
                 // Play animation here.
-                enemy.animator.Play(enemy.attackStrings[attackSequence[attackIndex]]);
+                enemy.animator.Play(enemy.attackStrings[attackSequence[attackIndex]], -1, 0);
 
                 attackStarted = true;
             }
@@ -50,16 +47,42 @@ namespace CamKnight
             // Increment timer.
             timer += Time.deltaTime;
 
-            if(timer >= enemy.attackInterval)
+            if (timer >= enemy.attackInterval)
             {
-                // Attack code here.
+                // Set attack indicator off.
+                enemy.attackIcons[attackSequence[attackIndex]].gameObject.SetActive(false);
+
+                // Attack code.
+                CheckForSword check = enemy.attackZones[attackSequence[attackIndex]].GetComponent<CheckForSword>();
+                // Block.
+                if (check.ContainsSword && check.Sword.State == SwordBehavior.SwordState.BLOCKING)
+                {
+                    // Increment stun meter.
+                    enemy.stun += enemy.blockStun;
+
+                    // Set stun bar.
+                    enemy.stunFill.fillAmount = enemy.stun / enemy.stunMax;
+
+                    // Activate block vignette.
+                    enemy.blockVignette.ActivateVignette();
+
+                    // If enemy stun reaches max change to stunned state.
+                    if (enemy.stun >= enemy.stunMax) enemy.ChangeState(new Stunned());
+                }
+
+                // Hit.
+                else
+                {
+                    // Activate hurt vignette.
+                    enemy.hurtVignette.ActivateVignette();
+
+                    // Player damage.
+                    enemy.gameManager.PlayerTakeDamage();
+                }
 
                 // If last attack in sequence.
                 if (attackIndex == attackSequence.Length - 1)
                 {
-                    // Set attack indicator off.
-                    enemy.attackIcons[attackSequence[attackIndex]].gameObject.SetActive(false);
-
                     // Change to idle state.
                     enemy.ChangeState(new Idle());
                 }
@@ -67,9 +90,6 @@ namespace CamKnight
                 // Setup next attack.
                 else
                 {
-                    // Set attack indicator off.
-                    enemy.attackIcons[attackSequence[attackIndex]].gameObject.SetActive(false);
-
                     // Increment attack index.
                     attackIndex++;
 
@@ -80,6 +100,12 @@ namespace CamKnight
                     attackStarted = false;
                 }
             }
+        }
+
+        public void OnExit(EnemyController enemy)
+        {
+            // Set attack indicator off if enemy enters stun or death while is active.
+            enemy.attackIcons[attackSequence[attackIndex]].gameObject.SetActive(false);
         }
     }
 }

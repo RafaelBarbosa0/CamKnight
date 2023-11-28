@@ -15,7 +15,7 @@ namespace CamKnight
         private Transform swordPivot;
 
         // Enum for sword states/
-        private enum SwordState
+        public enum SwordState
         {
             ATTACKING,
             BLOCKING
@@ -41,6 +41,8 @@ namespace CamKnight
         [Header("Trail")]
         [SerializeField]
         private TrailRenderer trail;
+
+        public SwordState State { get => state; private set => state = value; }
 
         private void Start()
         {

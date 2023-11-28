@@ -6,6 +6,12 @@ TagManager:
   tags:
   - AttackZone
   - Sword
+  - Cam
+  - Knight
+  - SwordBehavior
+  - GameManager
+  - HealthFill
+  - StunFill
   layers:
   - Default
   - TransparentFX

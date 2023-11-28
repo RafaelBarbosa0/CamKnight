@@ -61,10 +61,14 @@
     <Compile Include="Assets\Scripts\Image Processing\BlobDetection.cs" />
     <Compile Include="Assets\Scripts\Image Processing\Blob.cs" />
     <Compile Include="Assets\Scripts\Sword\SwordTracking.cs" />
+    <Compile Include="Assets\Scripts\Enemy\HitVignette.cs" />
     <Compile Include="Assets\Scripts\Enemy\Stunned.cs" />
+    <Compile Include="Assets\Scripts\Game Managing\GameManager.cs" />
     <Compile Include="Assets\Scripts\Sword\SwordBehavior.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\Sword\SwordAttack.cs" />
     <Compile Include="Assets\Scripts\Enemy\Dead.cs" />
+    <Compile Include="Assets\Scripts\CheckForSword.cs" />
     <Compile Include="Assets\Scripts\Enemy\Spawning.cs" />
   </ItemGroup>
   <ItemGroup>

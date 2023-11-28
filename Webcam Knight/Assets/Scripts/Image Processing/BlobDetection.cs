@@ -17,6 +17,11 @@ namespace CamKnight
         [SerializeField]
         private bool processImage;
 
+        [Header("Run every X frames")]
+        [SerializeField]
+        private float frameLimit;
+        private float frames;
+
         // Colors we are looking for.
         [Header("Colors to look for")]
         [SerializeField]
@@ -73,9 +78,6 @@ namespace CamKnight
         [SerializeField]
         private int minBlobSize;
 
-        // Run update once every X frames.
-        private float frames;
-
         public Vector2 TipMidPoint { get => tipMidPoint; private set => tipMidPoint = value; }
         public Vector2 BaseMidPoint { get => baseMidPoint; private set => baseMidPoint = value; }
         public Texture2D TextureTarget { get => textureTarget; private set => textureTarget = value; }
@@ -116,7 +118,7 @@ namespace CamKnight
         {
             frames += Time.deltaTime;
 
-            if(frames % 10 == 0)
+            if(frames >= frameLimit)
             {
                 // Apply non-processed image to material's main texture, for testing purposes.
                 if (!processImage) planeRenderer.material.SetTexture("_MainTex", cam);
