@@ -234,7 +234,7 @@ namespace CamKnight
         {
             cam.Stop();
 
-            cam.name = newCam.name;
+            cam.deviceName = newCam.name;
 
             cam.Play();
         }

@@ -118,7 +118,7 @@ namespace CamKnight
             }
 
             // Select base color.
-            if(Input.GetMouseButtonDown(0) && selectingBase)
+            if (Input.GetMouseButtonDown(0) && selectingBase)
             {
                 Color color = SelectColor();
                 if (color != new Color(0, 0, 0))
@@ -158,9 +158,9 @@ namespace CamKnight
         {
             WebCamDevice[] cams = WebCamTexture.devices;
             WebCamTexture currentCam = blobs.GetCam();
-
+            
             int index = 0;
-            for(int i = 0; i < cams.Length; i++)
+            for (int i = 0; i < cams.Length; i++)
             {
                 if (cams[i].name == currentCam.deviceName)
                 {
@@ -170,7 +170,8 @@ namespace CamKnight
             }
 
             if (index + 1 >= cams.Length) index = 0;
-            else index++;
+
+            else index++;    
 
             blobs.SetCam(cams[index]);
         }
@@ -181,7 +182,7 @@ namespace CamKnight
             WebCamTexture currentCam = blobs.GetCam();
 
             int index = 0;
-            for(int i = 0;i < cams.Length;i++)
+            for (int i = 0; i < cams.Length; i++)
             {
                 if (cams[i].name == currentCam.deviceName)
                 {

@@ -60,9 +60,11 @@
     <Compile Include="Assets\Scripts\Enemy\Idle.cs" />
     <Compile Include="Assets\Scripts\Enemy\Attacking.cs" />
     <Compile Include="Assets\Scripts\Image Processing\BlobDetection.cs" />
+    <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Image Processing\Blob.cs" />
     <Compile Include="Assets\Scripts\Sword\SwordTracking.cs" />
     <Compile Include="Assets\Scripts\Enemy\HitVignette.cs" />
+    <Compile Include="Assets\Scripts\Audio\Sound.cs" />
     <Compile Include="Assets\Scripts\Enemy\Stunned.cs" />
     <Compile Include="Assets\Scripts\Game Managing\GameManager.cs" />
     <Compile Include="Assets\Scripts\Sword\SwordBehavior.cs" />
@@ -72,8 +74,6 @@
     <Compile Include="Assets\Scripts\Enemy\Dead.cs" />
     <Compile Include="Assets\Scripts\CheckForSword.cs" />
     <Compile Include="Assets\Scripts\Enemy\Spawning.cs" />
-    <Compile Include="Assets\Scripts\Audio\Sound.cs" />
-    <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -350,12 +350,6 @@
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@3.0.2\Runtime\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Android.Types">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.10f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Types.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Android.Gradle">
-      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.10f1\Editor\Data\PlaybackEngines\AndroidPlayer\Unity.Android.Gradle.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.10f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
