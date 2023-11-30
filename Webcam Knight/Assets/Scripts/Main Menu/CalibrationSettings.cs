@@ -15,6 +15,12 @@ namespace CamKnight
         [SerializeField]
         private Button back;
 
+        [Header("Camera buttons")]
+        [SerializeField]
+        private Button previousCam;
+        [SerializeField]
+        private Button nextCam;
+
         [Header("Process button")]
         [SerializeField]
         private Button process;
@@ -73,6 +79,8 @@ namespace CamKnight
             tipColor.onClick.AddListener(SetTipColor);
             baseColor.onClick.AddListener(SetBaseColor);
             process.onClick.AddListener(ToggleImageProcessing);
+            nextCam.onClick.AddListener(SetNextCam);
+            previousCam.onClick.AddListener(SetPrevCam);
 
             // Tip slider.
             tipValue.text = blobs.TipColorThreshold.ToString();
@@ -144,6 +152,48 @@ namespace CamKnight
         private void ToggleImageProcessing()
         {
             blobs.ImageProcessing = !blobs.ImageProcessing;
+        }
+
+        private void SetNextCam()
+        {
+            WebCamDevice[] cams = WebCamTexture.devices;
+            WebCamTexture currentCam = blobs.GetCam();
+
+            int index = 0;
+            for(int i = 0; i < cams.Length; i++)
+            {
+                if (cams[i].name == currentCam.name)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            if (index + 1 >= cams.Length) index = 0;
+            else index++;
+
+            blobs.SetCam(cams[index]);
+        }
+
+        private void SetPrevCam()
+        {
+            WebCamDevice[] cams = WebCamTexture.devices;
+            WebCamTexture currentCam = blobs.GetCam();
+
+            int index = 0;
+            for(int i = 0;i < cams.Length;i++)
+            {
+                if (cams[i].name == currentCam.name)
+                {
+                    index = i;
+                    break;
+                }
+            }
+
+            if (index - 1 < 0) index = cams.Length - 1;
+            else index--;
+
+            blobs.SetCam(cams[index]);
         }
 
         /// <summary>

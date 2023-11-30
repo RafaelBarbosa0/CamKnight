@@ -760,17 +760,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4da3527130bb03945812cfbd52e107d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knightPrefab: {fileID: 1815376117723503017, guid: a70301a15e0adf94081ae8e4beb219fe, type: 3}
   hearts:
   - {fileID: 1623801450}
   - {fileID: 887810881}
   - {fileID: 71440162}
   - {fileID: 1515319254}
   - {fileID: 1129238297}
-  knightPrefab: {fileID: 1815376117723503017, guid: a70301a15e0adf94081ae8e4beb219fe, type: 3}
   healthIncrement: 10
   stunIncrement: 4
   attackIncrement: 1
-  cam: {fileID: 0}
   gameplayCanvas: {fileID: 1419541764}
   gameOverCanvas: {fileID: 1119442799}
   score: {fileID: 1446659985}
@@ -3112,7 +3111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5585668377378544984, guid: a70301a15e0adf94081ae8e4beb219fe, type: 3}
       propertyPath: attackAmount
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a70301a15e0adf94081ae8e4beb219fe, type: 3}

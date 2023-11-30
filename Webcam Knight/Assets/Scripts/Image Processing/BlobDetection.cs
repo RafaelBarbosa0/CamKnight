@@ -89,6 +89,7 @@ namespace CamKnight
         public float TipColorThreshold { get => tipColorThreshold; set => tipColorThreshold = value; }
         public float BaseColorTreshold { get => baseColorTreshold; set => baseColorTreshold = value; }
 
+
         private void Awake()
         {
             // If there is no active cam instance this becomes it.
@@ -146,7 +147,7 @@ namespace CamKnight
 
             frames += Time.deltaTime;
 
-            if(frames >= frameLimit)
+            if (frames >= frameLimit)
             {
                 // Apply non-processed image to material's main texture, for testing purposes.
                 if (!imageProcessing) planeRenderer.material.SetTexture("_MainTex", cam);
@@ -222,6 +223,20 @@ namespace CamKnight
 
                 frames = 0;
             }
+        }
+
+        public WebCamTexture GetCam()
+        {
+            return cam;
+        }
+
+        public void SetCam(WebCamDevice newCam)
+        {
+            cam.Stop();
+
+            cam.name = newCam.name;
+
+            cam.Play();
         }
 
         /// <summary>
