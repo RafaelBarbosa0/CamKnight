@@ -11,6 +11,8 @@ namespace CamKnight
 
         public void OnEnter(EnemyController enemy)
         {
+            AudioManager.Instance.PlaySFX("EnemyDeath", true);
+
             enemy.animator.Play("Death");
 
             enemy.gameManager.PlayerRecoverHealth();

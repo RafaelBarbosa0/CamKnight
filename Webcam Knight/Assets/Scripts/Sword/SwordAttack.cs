@@ -73,6 +73,9 @@ namespace CamKnight
             // Enable hit effect.
             attackIcon.transform.position = pos.position;
             hitVignette.ActivateVignette();
+
+            // Play sound.
+            AudioManager.Instance.PlaySFX("DealDamage", true);
         }
     }
 }

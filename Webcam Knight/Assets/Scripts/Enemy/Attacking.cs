@@ -60,6 +60,9 @@ namespace CamKnight
                 // Block.
                 if (check.ContainsSword && check.Sword.State == SwordBehavior.SwordState.BLOCKING)
                 {
+                    // Play sound.
+                    AudioManager.Instance.PlaySFX("Parry", true);
+
                     // Increment stun meter.
                     enemy.stun += enemy.blockStun;
 

@@ -64,8 +64,12 @@ namespace CamKnight
             // When player HP reaches 0 activate game over screen.
             if (playerHealth <= 0 && !ended)
             {
-                EndGame();
+                // Stop music and death sound.
+                AudioManager.Instance.StopMusic();
+                AudioManager.Instance.PlaySFX("PlayerDeath", false);
 
+                // End game.
+                EndGame();
                 ended = true;
             }
         }
@@ -75,6 +79,10 @@ namespace CamKnight
         /// </summary>
         public void PlayerTakeDamage()
         {
+            // Play sound.
+            AudioManager.Instance.PlaySFX("TakeDamage", true);
+            AudioManager.Instance.PlaySFX("PlayerGrunt", true);
+
             // Decrement health.
             playerHealth--;
 
@@ -129,6 +137,9 @@ namespace CamKnight
         /// </summary>
         private void Retry()
         {
+            AudioManager.Instance.PlaySFX("StartGame", false);
+            AudioManager.Instance.PlayMusic("GameplayTheme");
+
             Scene currentScene = SceneManager.GetActiveScene();
 
             SceneManager.LoadScene(currentScene.name);
@@ -136,6 +147,9 @@ namespace CamKnight
 
         private void ReturnToMenu()
         {
+            AudioManager.Instance.PlaySFX("ButtonPress", false);
+            AudioManager.Instance.PlayMusic("MainMenu");
+
             SceneManager.LoadScene("MainMenu");
         }
     }

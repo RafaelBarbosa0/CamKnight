@@ -151,6 +151,8 @@ namespace CamKnight
         /// </summary>
         private void SetTipColor()
         {
+            if (blobs.ImageProcessing) return;
+
             selectingTip = true;
 
             tipIndicator.SetActive(true);
@@ -163,6 +165,8 @@ namespace CamKnight
         /// </summary>
         private void SetBaseColor()
         {
+            if (blobs.ImageProcessing) return;
+
             selectingBase = true;
 
             baseIndicator.SetActive(true);

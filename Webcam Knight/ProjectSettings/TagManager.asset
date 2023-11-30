@@ -12,6 +12,7 @@ TagManager:
   - GameManager
   - HealthFill
   - StunFill
+  - AudioManager
   layers:
   - Default
   - TransparentFX
