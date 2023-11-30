@@ -32,6 +32,9 @@ namespace CamKnight
             // If enemy health drops to 0 change to dead state.
             if (enemy.health <= 0) enemy.ChangeState(new Dead());
 
+            // If stun max enter stunned.
+            if (enemy.stun >= enemy.stunMax) enemy.ChangeState(new Stunned());
+
             // Attack start behavior.
             if (!attackStarted)
             {

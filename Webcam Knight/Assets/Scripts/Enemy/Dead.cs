@@ -12,12 +12,15 @@ namespace CamKnight
         public void OnEnter(EnemyController enemy)
         {
             enemy.animator.Play("Death");
+
+            enemy.gameManager.PlayerRecoverHealth();
         }
 
         public void UpdateState(EnemyController enemy)
         {
             timer += Time.deltaTime;
 
+            // Spawn new enemy.
             if(timer >= enemy.respawnTimer)
             {
                 enemy.gameManager.SpawnKnight();

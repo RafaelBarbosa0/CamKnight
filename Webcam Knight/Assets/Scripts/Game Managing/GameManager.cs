@@ -36,7 +36,13 @@ namespace CamKnight
         private bool ended;
 
         [SerializeField]
+        private TMP_Text score;
+
+        [SerializeField]
         private Button retry;
+
+        [SerializeField]
+        private Button mainMenu;
 
         public int PlayerHealth { get => playerHealth; set => playerHealth = value; }
         public float HealthIncrement { get => healthIncrement; private set => healthIncrement = value; }
@@ -72,6 +78,15 @@ namespace CamKnight
             if(playerHealth >= 0) hearts[playerHealth].SetActive(false);
         }
 
+        public void PlayerRecoverHealth()
+        {
+            if(playerHealth < 5)
+            {
+                hearts[playerHealth].SetActive(true);
+                playerHealth++;
+            }
+        }
+
         /// <summary>
         /// Spawn new knight and destroy defeated one.
         /// </summary>
@@ -98,6 +113,9 @@ namespace CamKnight
             // Switch from gameplay canvas to game over canvas.
             gameplayCanvas.SetActive(false);
             gameOverCanvas.SetActive(true);
+
+            // Set score text.
+            score.text = "Enemies killed : " + (spawnAmount - 1).ToString();
         }
 
         /// <summary>
