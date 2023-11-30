@@ -162,7 +162,7 @@ namespace CamKnight
             int index = 0;
             for(int i = 0; i < cams.Length; i++)
             {
-                if (cams[i].name == currentCam.name)
+                if (cams[i].name == currentCam.deviceName)
                 {
                     index = i;
                     break;
@@ -183,7 +183,7 @@ namespace CamKnight
             int index = 0;
             for(int i = 0;i < cams.Length;i++)
             {
-                if (cams[i].name == currentCam.name)
+                if (cams[i].name == currentCam.deviceName)
                 {
                     index = i;
                     break;
