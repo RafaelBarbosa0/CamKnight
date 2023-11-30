@@ -15,7 +15,7 @@ namespace CamKnight
         // Turn off image processing for testing.
         [Header("Turn processing on and off")]
         [SerializeField]
-        private bool processImage;
+        private bool imageProcessing;
 
         [Header("Run every X frames")]
         [SerializeField]
@@ -78,9 +78,35 @@ namespace CamKnight
         [SerializeField]
         private int minBlobSize;
 
+        private static BlobDetection activeInstance;
+
         public Vector2 TipMidPoint { get => tipMidPoint; private set => tipMidPoint = value; }
         public Vector2 BaseMidPoint { get => baseMidPoint; private set => baseMidPoint = value; }
         public Texture2D TextureTarget { get => textureTarget; private set => textureTarget = value; }
+        public bool ImageProcessing { get => imageProcessing; set => imageProcessing = value; }
+        public Color TipColor { get => tipColor; set => tipColor = value; }
+        public Color BaseColor { get => baseColor; set => baseColor = value; }
+        public float TipColorThreshold { get => tipColorThreshold; set => tipColorThreshold = value; }
+        public float BaseColorTreshold { get => baseColorTreshold; set => baseColorTreshold = value; }
+
+        private void Awake()
+        {
+            // If there is no active cam instance this becomes it.
+            if (activeInstance == null)
+            {
+                activeInstance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+
+            // If there is already an active instance get rid of any other cams in the scene.
+            else
+            {
+                if (this != activeInstance)
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
 
         private void Start()
         {
@@ -116,12 +142,14 @@ namespace CamKnight
 
         private void Update()
         {
+            if (!cam.isPlaying) cam.Play();
+
             frames += Time.deltaTime;
 
             if(frames >= frameLimit)
             {
                 // Apply non-processed image to material's main texture, for testing purposes.
-                if (!processImage) planeRenderer.material.SetTexture("_MainTex", cam);
+                if (!imageProcessing) planeRenderer.material.SetTexture("_MainTex", cam);
 
                 // Image processing.
                 else

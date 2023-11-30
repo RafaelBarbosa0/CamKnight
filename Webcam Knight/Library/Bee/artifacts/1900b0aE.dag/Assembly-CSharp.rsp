@@ -365,6 +365,8 @@
 "Assets/Scripts/Game Managing/GameManager.cs"
 "Assets/Scripts/Image Processing/Blob.cs"
 "Assets/Scripts/Image Processing/BlobDetection.cs"
+"Assets/Scripts/Main Menu/CalibrationSettings.cs"
+"Assets/Scripts/Main Menu/MainMenuButtons.cs"
 "Assets/Scripts/Sword/SwordAttack.cs"
 "Assets/Scripts/Sword/SwordBehavior.cs"
 "Assets/Scripts/Sword/SwordTracking.cs"

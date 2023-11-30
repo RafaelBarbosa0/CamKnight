@@ -12,11 +12,15 @@ namespace CamKnight
     {
         private int playerHealth = 5;
 
+        [Header("Knight prefab")]
+        [SerializeField]
+        private GameObject knightPrefab;
+
+        [Header("Heart icons")]
         [SerializeField]
         private GameObject[] hearts;
 
-        [SerializeField]
-        private GameObject knightPrefab;
+        [Header("Increment values")]
         [SerializeField]
         private float healthIncrement;
         [SerializeField]
@@ -25,9 +29,7 @@ namespace CamKnight
         private int attackIncrement;
         private int spawnAmount = 0;
 
-        [SerializeField]
-        private GameObject cam;
-
+        [Header("Canvases")]
         [SerializeField]
         private GameObject gameplayCanvas;
         [SerializeField]
@@ -35,12 +37,13 @@ namespace CamKnight
 
         private bool ended;
 
+        [Header("Score")]
         [SerializeField]
         private TMP_Text score;
 
+        [Header("Buttons")]
         [SerializeField]
         private Button retry;
-
         [SerializeField]
         private Button mainMenu;
 
@@ -53,6 +56,7 @@ namespace CamKnight
         private void Start()
         {
             retry.onClick.AddListener(Retry);
+            mainMenu.onClick.AddListener(ReturnToMenu);
         }
 
         private void Update()
@@ -78,6 +82,9 @@ namespace CamKnight
             if(playerHealth >= 0) hearts[playerHealth].SetActive(false);
         }
 
+        /// <summary>
+        /// Player recovers one health when enemy is killed.
+        /// </summary>
         public void PlayerRecoverHealth()
         {
             if(playerHealth < 5)
@@ -106,8 +113,7 @@ namespace CamKnight
             // Find knight gameobject.
             GameObject knight = GameObject.FindGameObjectWithTag("Knight");
 
-            // Deactivate cam and knight.
-            cam.SetActive(false);
+            // Deactivate knight.
             knight.SetActive(false);
 
             // Switch from gameplay canvas to game over canvas.
@@ -126,6 +132,11 @@ namespace CamKnight
             Scene currentScene = SceneManager.GetActiveScene();
 
             SceneManager.LoadScene(currentScene.name);
+        }
+
+        private void ReturnToMenu()
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }

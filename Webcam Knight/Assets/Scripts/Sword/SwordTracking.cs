@@ -45,6 +45,7 @@ namespace CamKnight
 
         public Vector3 Direction { get => direction; private set => direction = value; }
         public Vector3 TipPosition { get => tipPosition; private set => tipPosition = value; }
+        public float FilterTreshold { get => filterTreshold; set => filterTreshold = value; }
 
         private void Start()
         {
